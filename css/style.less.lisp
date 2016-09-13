@@ -1,8 +1,6 @@
 body { font-family:Arial; font-size:14px; }
-			body>span, body>h1 { float:left; width:100%; margin:0; padding:0; margin-bottom:10px; }
 			
 			span { color:#888888;
-                >b { color:black; }
             }
 			
 			#selected { width:100%; margin-top:20px; }
@@ -30,15 +28,16 @@ body { font-family:Arial; font-size:14px; }
 						>i { position:relative; width:@icon-width; margin-left:(@spacing+@icon-width)*-1; font-size:1.125em; font-weight:bold; padding-right:@spacing; text-align:right; }
 					}
 
-					>div.dropdown-list { float:left; width:100%; position:relative; width:100%; .transform(scale(1, 0)); .transition(-webkit-transform ease 250ms); .transition(transform ease 250ms);
-						>div { position:absolute; width:100%; z-index:2; cursor:pointer; background:white;
+					>div.dropdown-list {     float:left; width:100%; position:relative; width:100%; .transform(scale(1, 0)); .transition(-webkit-transform ease 250ms); .transition(transform ease 250ms);
+						>input{background:#e2e9f0;width:100%;height: 40px;border:none;text-align: -webkit-center;}
+						>div { height: 170px;max-height: 170px;overflow: auto;position:absolute; width:100%; z-index:2; cursor:pointer; background:white;
 							>div { float:left; width:100%; padding:0 @spacing; font-size:@font-size; .border-box; border:solid 1px @border-colour; border-top:none;background-color: #c5d2e0;
 								@icon-width:20px;
 								&:hover { background:#364150; color:white;}
 								&.selected { background:@select-colour; color:black; }
 								>* { .vertical-centre(@height); }
 								>span { float:left; width:100%; position:relative; padding-right:@icon-width+@spacing; .border-box; color:inherit; 
-									>span { position: absolute;top: -80px;left: 35%; margin-left: 0%;padding: 5px;background-color: #364150;border-radius: 5px;display: none;color: #fff; font-size: 14px;  width: 50%;height:150%;text-align: center;}
+									>span { position: fixed;top:inherit;left: 35%; margin-left: 0%;padding: 5px;background-color: #364150;border-radius: 5px;display: none;color: #fff; font-size: 14px;  width: 50%;height:170%;text-align: center;margin-top: -20%;}
 									&:hover span { display: block;} 
 								}
 								>i { float:left; width:@icon-width; margin-left:@icon-width*-1; display:none; }

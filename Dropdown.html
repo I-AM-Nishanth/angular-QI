@@ -8,97 +8,22 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
           <link rel="stylesheet" type="text/less" href="./css/style.less.lisp" />
 		
-		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		
         
-		<script type="text/javascript">
-			var app = angular.module("demo", []);
-
-            app.controller("dropdownDemo", function($scope) {
-				$scope.list = [{
-					name: "John",
-					Vehicle:"SGD1234F"
-				}, {
-					name: "Kumar",
-					Vehicle:""
-				},{
-					name: "Lee",
-					Vehicle:""
-				}, {
-					name: "Mike",
-					Vehicle:"SGD2345F"
-				}, {
-					name: "Jake",
-					Vehicle:""
-				}];
-                $scope.select = "";
-            });
-			
-			app.run(function($rootScope) {
-				angular.element(document).on("click", function(e) {
-					$rootScope.$broadcast("documentClicked", angular.element(e.target));
-				});
-			});
-
-            app.directive("dropdown", function($rootScope) {
-                return {
-					restrict: "E",
-					templateUrl: "templates/dropdown.html",
-					scope: {
-						placeholder: "@",
-						list: "=",
-						selected: "=",
-						property: "@"
-					},
-					link: function(scope) {
-						scope.listVisible = false;
-						scope.isPlaceholder = true;
-
-						scope.select = function(item) {
-							scope.isPlaceholder = false;
-							scope.selected = item;
-							if (scope.onChange !== undefined)
-								scope.onChange(item);
-						};
-
-						scope.isSelected = function(item) {
-							return item[scope.property] === scope.selected[scope.property];
-						};
-						
-						scope.show = function() {
-							scope.listVisible = true;
-						};
-
-						$rootScope.$on("documentClicked", function(inner, target) {
-							if (!$(target[0]).is(".dropdown-display.clicked") && !$(target[0]).parents(".dropdown-display.clicked").length > 0)
-								scope.$apply(function() {
-									scope.listVisible = false;
-								});
-						});
-						//Here get the selected value of the dropdown list 
-						scope.$watch("selected", function(value) {
-							console.log(value);
-							scope.isPlaceholder = scope.selected[scope.property] === undefined;
-							if(scope.property == ""){
-							scope.display = scope.selected[scope.Vehicle];
-						}
-						else
-							scope.display = scope.selected[scope.property];
-
-						});
-					}
-				}
-            });
-		</script>
+		
 	</head>
 	<body ng-controller="dropdownDemo">
 		
 	<!--Here pass the list having property name(Driver's name) along with vehicle number-->
 
 		<dropdown placeholder="Select Driver to pair" list="list" property="name" selected="select">
-			
+
+
 		</dropdown>
+		<script type="text/javascript" src="./js/dropdown.js">
+		</script>
 	</body>
 </html>
