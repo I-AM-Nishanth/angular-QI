@@ -1,0 +1,12 @@
+-> Include the angularJs script file
+      Two ways we can include the script file
+      1)Downloading and hosting files locally
+      2)CDN access ex:https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js
+->In order to run an angular js project which has AJAX requests (routing, ng-includes, templateUrls, etc.)  we need to create a server.
+->one way of creating a server is by using NPM i.e if you are using Node.js
+->First Install the server using the command npm install -g http-server
+->After installation cd into your projectDownloading and hosting files locally folder and run http-server -o
+->-o is to open browser to the page
+->If you want to serve the web app on a different IP address or port, edit the "start" script within package.json      
+
+------------Now your angular js project is ready to run----------------------------------------------------
